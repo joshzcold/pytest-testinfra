@@ -47,7 +47,7 @@ def get_ansible_config():
 def get_ansible_inventory(config, inventory_file):
     # Disable ansible verbosity to avoid
     # https://github.com/ansible/ansible/issues/59973
-    cmd = "ANSIBLE_VERBOSITY=0 ansible-inventory --list"
+    cmd = "ANSIBLE_VERBOSITY=0 ansible localhost  -m debug -a 'msg={{ hostvars }}'"
     args = []
     if inventory_file:
         cmd += " -i %s"
